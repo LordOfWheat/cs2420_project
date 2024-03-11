@@ -1,0 +1,84 @@
+ --- THE HANGMAN GAME ---
+
+    Start Logic:
+- Chooose Random Word (of 20)
+- Reset Hangman State (0)
+- Update Visual Prompt + Hangman Visual 0
+- Get User Input for first letter
+
+    In-Progress Logic:
+- Search for Inputted Letter in Word:
+  - If Letter NOT found:
+    - Hangman State + 1
+    Update Visual Prompt + Hangman Visual + 1
+  - If Letter is found:
+    - Add Letter to Correct Letters
+    - Check if Correct Letters == Word
+    - Update Visual Prompt
+
+    End Logic:
+- Show Win/Lose Screen
+- Await User input to restart game
+
+
+ --- Variables ---
+
+20 words: array/List of Strings
+State of hangman: enum with corresponding String with "Hangman Frame"
+Letters in selected word: 
+Correct letters: String
+Incorrect letters: String
+Total letters in the alphabet (probably not necessary)
+
+
+ --- HANGMAN FRAMES ---
+
+   +---+
+   |   |
+       |
+       |
+       |
+       |
+  ===========
+   +---+
+   |   |
+   O   |
+       |
+       |
+       |
+  ===========
+   +---+
+   |   |
+   O   |
+   |   |
+       |
+       |
+  ===========
+   +---+
+   |   |
+   O   |
+   |\  |
+       |
+       |
+  ===========
+   +---+
+   |   |
+   O   |
+  /|\  |
+       |
+       |
+  ===========
+   +---+
+   |   |
+   O   |
+  /|\  |
+    \  |
+       |
+  ===========
+   +---+
+   |   |
+   O   |
+  /|\  |
+  / \  |
+       |
+  ===========
