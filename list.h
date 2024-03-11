@@ -14,6 +14,9 @@ struct Node {
 };
 
 class list {
+public:
+    
+private:
 
 };
 
