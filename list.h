@@ -27,7 +27,7 @@ class list {
     public:
         list();
         bool is_empty();
-        int get_count();
+        int get_count(); // get the count of the list
         int search(T data); // find index of letter
         void insert(T data);
         void remove(T data);
