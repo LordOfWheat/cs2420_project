@@ -1,10 +1,37 @@
 //
 // Created by christinaroesner on 3/11/2024.
 //
-#include <iostream>
+
 #include "list.h"
 using namespace std;
 
 int main() {
-    cout << "testing";
+     /*
+      * start screen
+      * 20 words stored in list (use the random function to pick random word)
+      * after random word is selected, store the letters in word separately in list (ex. [ c, a, t])
+      * make an empty list that will be for correct letters (semi-empty, fill it with underscores for printing)
+      * make an empty list that will be for incorrect letters
+      * print correct letters
+      * wait for user input
+      * search for inputted letter in the letter-in-word list
+      *     if not found, insert in incorrect letters, update hangman state (?) and print
+      *     if found, replace in correct letters; print correct letters (with the underscores) and same hangman frame
+      * repeat until either correct letters list has no underscores or hangman state is at max
+      * if no underscores, win screen
+      * if hangman state is max, lose screen
+      */
+
+    // for testing the functions, you may delete if you want
+     auto ListTest = new list<int>();
+
+     for (int i = 1; i < 11; i++) {
+         ListTest->insert(i);
+     }
+
+     cout << *ListTest << endl << endl;
+
+     ListTest->replace(5, 11); // change index to any int to test that replace works
+
+     cout << *ListTest << endl << endl;
 }
