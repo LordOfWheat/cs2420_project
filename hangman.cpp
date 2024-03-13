@@ -20,6 +20,7 @@ int main() {
       * repeat until either correct letters list has no underscores or hangman state is at max
       * if no underscores, win screen
       * if hangman state is max, lose screen
+      * when finished, clear lists
       */
 
     // for testing the functions, you may delete if you want
