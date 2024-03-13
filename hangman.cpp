@@ -3,6 +3,7 @@
 //
 
 #include "list.h"
+#include "gamemanager.h"
 using namespace std;
 
 int main() {

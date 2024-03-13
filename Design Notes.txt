@@ -1,20 +1,24 @@
  --- THE HANGMAN GAME ---
 
     Start Logic:
-- Chooose Random Word (of 20)
-- Reset Hangman State (0)
-- Update Visual Prompt + Hangman Visual 0
-- Get User Input for first letter
+- Choose Random Word (of 20)
+- Draw "_" for each letter in the Word
+- Draw Empty Hangman
+- [Start Next Phase]
 
     In-Progress Logic:
-- Search for Inputted Letter in Word:
+- Prompt user for a Letter
+- Search for Input Letter in Word:
   - If Letter NOT found:
-    - Hangman State + 1
-    Update Visual Prompt + Hangman Visual + 1
+    - Add Letter to list of incorrect letters
+    - Increment Hangman State
   - If Letter is found:
     - Add Letter to Correct Letters
-    - Check if Correct Letters == Word
-    - Update Visual Prompt
+  - Check if you Win/Lose (if Letters == Word || Hangman State == max)
+    - if Win/Lose [Start End Phase]
+  - Draw "_" for unfound letters and draw letters that are found
+  - Draw Current Hangman State
+  - [Restart In-Progress Phase]
 
     End Logic:
 - Show Win/Lose Screen
