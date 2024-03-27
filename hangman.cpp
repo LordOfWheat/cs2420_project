@@ -3,7 +3,7 @@
 //
 
 #include "list.h"
-#include "gamemanager.h"
+#include "GameManager.h"
 using namespace std;
 
 int main() {
@@ -46,4 +46,11 @@ int main() {
 
      cout << *ListTest << endl;
      cout << ListTest->search(3, 2) << endl;
+     cout << *ListTest << endl << endl;
+     
+     
+     // Game Manager Testing
+     GameManager gameManager;
+     
+     gameManager.StartGame();
 }

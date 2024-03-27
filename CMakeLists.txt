@@ -3,4 +3,4 @@ project(cs2420_project)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(test hangman.cpp gamemanager.h)
+add_executable(test hangman.cpp GameManager.h)

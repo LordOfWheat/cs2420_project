@@ -28,7 +28,7 @@
  --- Variables ---
 
 20 words: array/List of Strings
-State of hangman: enum with corresponding String with "Hangman Frame"
+State of hangman: array with corresponding String with "Hangman Frame"
 Letters in selected word: 
 Correct letters: String
 Incorrect letters: String
