@@ -29,6 +29,7 @@ class list {
         bool is_empty();
         int get_count(); // get the count of the list
         int search(T data); // find index of letter
+        int search(T data, int iter); // find index of (iter)st letter
         void insert(T data);
         void remove(T data);
         void replace(int index, T data); // to replace selected underscore with correct letter if used by player
@@ -74,6 +75,32 @@ int list<T>::search(T data) {
     else {
         return index;
     }
+}
+
+template <class T>
+int list<T>::search(T data, int iter) {
+    auto temp = this->head;
+    int index = 0;
+    int i = 1;
+
+    while (i != iter+1) {
+        while (temp != nullptr && temp->value != data) {
+            temp = temp->next;
+            index++;
+        }
+
+        if (temp == nullptr) {
+            throw runtime_error("Element not found");
+        }
+
+        i++;
+
+        if (i != iter+1) {
+            temp = temp->next;
+            index++;
+        }
+    }
+    return index;
 }
 
 template <class T>

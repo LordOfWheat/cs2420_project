@@ -31,9 +31,19 @@ int main() {
          ListTest->insert(i);
      }
 
-     cout << *ListTest << endl << endl;
+//     cout << "Before replace: " << endl;
+//     cout << *ListTest << endl << endl;
+//
+//     ListTest->replace(5, 11); // change index to any int to test that replace works
+//
+//     cout << "After replace: " << endl;
+//     cout << *ListTest << endl << endl;
 
-     ListTest->replace(5, 11); // change index to any int to test that replace works
+     cout << *ListTest << endl;
+     cout << ListTest->search(3) << endl << endl;
 
-     cout << *ListTest << endl << endl;
+     ListTest->insert(3);
+
+     cout << *ListTest << endl;
+     cout << ListTest->search(3, 2) << endl;
 }
