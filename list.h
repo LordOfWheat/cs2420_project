@@ -30,6 +30,7 @@ class list {
         int get_count(); // get the count of the list
         int search(T data); // find index of letter
         int search(T data, int iter); // find index of (iter)st letter
+        bool searchAll(list<T> *l);
         void insert(T data);
         void remove(T data);
         void replace(int index, T data); // to replace selected underscore with correct letter if used by player
@@ -40,6 +41,8 @@ class list {
         Node<T>* head;
         Node<T>* tail;
         int cnt;
+
+        bool searchAll(Node<T> *first, Node<T> *second);
 };
 
 template <class T>
@@ -101,6 +104,28 @@ int list<T>::search(T data, int iter) {
         }
     }
     return index;
+}
+
+template <class T>
+bool list<T>::searchAll(list<T> *l) {
+    return searchAll(this->head, l->head);
+}
+
+template <class T>
+bool list<T>::searchAll(Node<T> *first, Node<T> *second) {
+    bool flag = true;
+
+    while (second) {
+        if (first->value != second->value) {
+            flag = false;
+            break;
+        }
+
+        first = first->next;
+        second = second->next;
+    }
+
+    return flag;
 }
 
 template <class T>

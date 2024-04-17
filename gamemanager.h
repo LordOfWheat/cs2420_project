@@ -99,7 +99,7 @@ public:
         hintWord = "";
         for (int i = 0; i < word.size(); ++i)
         {
-            hintWord += "_";
+            hintWord += "_ ";
         }
         cout << hintWord << endl;
 
