@@ -77,29 +77,33 @@ private:
         cout << hangmans[hangmanIndex] << endl;
     }
     
+    // Update hintWord to be all "-" except for the correct letters
     void UpdateHintWord()
     {
         // TODO
     }
 
 public:
+    // Called when the game starts to initialize variables
     GameState StartGame()
     {
         // TODO
+        cout << " --- HANGMAN ---\n";
+        
         // Reset currentHangmanIndex
         currentHangmanIndex = 0;
         
         // Choose random word, set word
         word = "temporary";
         
-        // Draw empty hangman (cout << hangman)
+        // Draw empty hangman (this method will cout the correct Hangman)
         PrintCurrentHangman(currentHangmanIndex);
         
         // cout << "_" for word.length
         hintWord = "";
         for (int i = 0; i < word.size(); ++i)
         {
-            hintWord += "_ ";
+            hintWord += "_";
         }
         cout << hintWord << endl;
 
@@ -111,21 +115,64 @@ public:
     {
         // TODO
         // Prompt user for a letter, set letter
+        cout << "Guess a letter: \n";
         string letter;
         cin >> letter;
         
+        // Check that letter was not already guessed
+        if (correctLetters->search(letter[0]) == -1 && incorrectLetters->search(letter[0]) == -1)
+        {
+            cout << "You already guessed that letter!\n";
+            return GameState::InProgress;
+        }
+        
         // Search each letter in word for letter
+        bool isFound = false;
+        for (int i = 0; i < word.size(); i++)
+        {
+            if (letter[0] == word[i]) // Letter IS found
+            {
+                isFound = true;
+                correctLetters->insert(letter[0]);
+                break;
+            }
+        }
+        
         // if letter NOT found:
+        if (!isFound)
+        {
             // Add letter to list of incorrect letters
+            incorrectLetters->insert(letter[0]);
+            
             // Increment Hangman state
-        // else if letter is found:
+            currentHangmanIndex++; // Compare to maxHangmanIndex
+        }
+        else // else if letter is found:
+        {
             // Add letter to list of correct letters
+            correctLetters->insert(letter[0]);
+        }
+        
         // Check if you Win/Lose:
         // (if letters == word or hangman state == maxHangmanIndex)
+        if (correctLetters.searchAll(word) || currentHangmanIndex >= maxHangmanIndex)
+        {
             // Start End Phase
             return GameState::End;
-        // Draw "_" for each letter not in correct letters list
+        }
+        
         // Draw current Hangman State
+        PrintCurrentHangman(currentHangmanIndex);
+        
+        // Draw "_" for each letter not in correct letters list
+        for (int i = 0; i < word.size(); ++i)
+        {
+            if (correctLetters->search(word[i]) != -1)
+            {
+                hintWord[i] = word[i]; // Updates the hint with correct letters
+            }
+        }
+        cout << hintWord << endl;
 
         // Restart In-Progress phase if NOT Win/Lose
         return GameState::InProgress;
@@ -134,11 +181,24 @@ public:
     GameState EndGame()
     {
         // TODO
-        // Show Win/Lose screen
+        // Check if Win or Lose
+        bool win = true;
+        if (currentHangmanIndex >= maxHangmanIndex)
+        {
+            // Lose
+            win = false;
+        }
+        
+        // Show Win/Lose screen (if win)
+        
+        // Restart Logic:
         // Wait for user input
-
-        // Restart Game
-        return GameState::Start;
+        // if user inputs "y"
+            // Restart Game
+            //return GameState::Start;
+        // else
+        // Game Over
+        //cout << " --- Game Over ---\n";
     }
 };
 
