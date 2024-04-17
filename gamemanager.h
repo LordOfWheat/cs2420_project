@@ -194,6 +194,7 @@ public:
         else
         {
             // Show Lose Screen
+            PrintCurrentHangman(currentHangmanIndex);
             cout << "You failed to guess the word: " << word << endl;
             cout << "Play again? (y/n)\n";
         }
