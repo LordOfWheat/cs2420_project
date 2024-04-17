@@ -120,7 +120,7 @@ public:
         cin >> letter;
         
         // Check that letter was not already guessed
-        if (correctLetters->search(letter[0]) == -1 && incorrectLetters->search(letter[0]) == -1)
+        if (!(correctLetters->search(letter[0]) == -1 && incorrectLetters->search(letter[0]) == -1))
         {
             cout << "You already guessed that letter!\n";
             return GameState::InProgress;
@@ -155,7 +155,7 @@ public:
         
         // Check if you Win/Lose:
         // (if letters == word or hangman state == maxHangmanIndex)
-        if (correctLetters.searchAll(word) || currentHangmanIndex >= maxHangmanIndex)
+        if (correctLetters->searchAll(word) || currentHangmanIndex >= maxHangmanIndex)
         {
             // Start End Phase
             return GameState::End;
