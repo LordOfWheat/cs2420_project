@@ -81,15 +81,15 @@ int main()
     ///// --- Main Game Loop --- ////
     GameManager gameManager;
     
-    GameState gameState = Start;
+    GameState gameState = GameState::Start;
     
     do // Game Loop, runs the game until finished
     {
-        if (gameState == Start)
+        if (gameState == GameState::Start)
             gameState = gameManager.StartGame();
-        else if (gameState == InProgress)
+        else if (gameState == GameState::InProgress)
             gameState = gameManager.InProgress();
-        else if (gameState == End)
+        else if (gameState == GameState::End)
             gameState = gameManager.EndGame();
-    } while (gameState != End);
+    } while (gameState != GameState::Shutdown);
 }

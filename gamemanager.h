@@ -5,7 +5,7 @@
 #ifndef CS2420_PROJECT_GAMEMANAGER_H
 #define CS2420_PROJECT_GAMEMANAGER_H
 
-enum GameState { Start, InProgress, End };
+enum GameState { Start, InProgress, End, Shutdown };
 
 string hangmans[7] =
 {
@@ -76,23 +76,21 @@ private:
     {
         cout << hangmans[hangmanIndex] << endl;
     }
-    
-    // Update hintWord to be all "-" except for the correct letters
-    void UpdateHintWord()
-    {
-        // TODO
-    }
 
 public:
     // Called when the game starts to initialize variables
     GameState StartGame()
     {
-        // TODO
         cout << " --- HANGMAN ---\n";
         
-        // Reset currentHangmanIndex
+        // Reset variables
         currentHangmanIndex = 0;
+        delete correctLetters;
+        correctLetters = new list<char>();
+        delete incorrectLetters;
+        incorrectLetters = new list<char>();
         
+        // TODO : Set word randomly from a list
         // Choose random word, set word
         word = "temporary";
         
@@ -113,7 +111,6 @@ public:
 
     GameState InProgress()
     {
-        // TODO
         // Prompt user for a letter, set letter
         cout << "Guess a letter: \n";
         string letter;
@@ -153,8 +150,7 @@ public:
             correctLetters->insert(letter[0]);
         }
         
-        // Check if you Win/Lose:
-        // (if letters == word or hangman state == maxHangmanIndex)
+        // Check if you Win/Lose: (if letters == word or hangman state == maxHangmanIndex)
         if (correctLetters->searchAll(word) || currentHangmanIndex >= maxHangmanIndex)
         {
             // Start End Phase
@@ -180,7 +176,6 @@ public:
 
     GameState EndGame()
     {
-        // TODO
         // Check if Win or Lose
         bool win = true;
         if (currentHangmanIndex >= maxHangmanIndex)
@@ -189,16 +184,35 @@ public:
             win = false;
         }
         
-        // Show Win/Lose screen (if win)
+        // TODO : Show Win/Lose screen
+        if (win)
+        {
+            // Show Win Screen
+            cout << "You guessed the word: " << word << endl;
+            cout << "Play again? (y/n)\n";
+        }
+        else
+        {
+            // Show Lose Screen
+            cout << "You failed to guess the word: " << word << endl;
+            cout << "Play again? (y/n)\n";
+        }
         
         // Restart Logic:
         // Wait for user input
+        string input;
+        cin >> input;
+        
         // if user inputs "y"
+        if (input[0] == 'y' || input[0] == 'Y')
+        {
             // Restart Game
-            //return GameState::Start;
+            return GameState::Start;
+        }
         // else
         // Game Over
-        //cout << " --- Game Over ---\n";
+        cout << " --- Game Over ---\n";
+        return GameState::Shutdown;
     }
 };
 
