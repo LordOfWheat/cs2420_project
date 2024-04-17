@@ -73,7 +73,8 @@ int list<T>::search(T data) {
     }
 
     if (temp == nullptr) {
-        throw runtime_error("Element not found");
+        //throw runtime_error("Element not found");
+        return -1;
     }
     else {
         return index;
@@ -93,7 +94,8 @@ int list<T>::search(T data, int iter) {
         }
 
         if (temp == nullptr) {
-            throw runtime_error("Element not found");
+            //throw runtime_error("Element not found");
+            return -1;
         }
 
         i++;
