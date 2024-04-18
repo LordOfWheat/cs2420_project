@@ -108,7 +108,7 @@ public:
     {
         
         // Set random seed
-        srand(time(0));
+        srand(time(NULL));
         
         // Reset variables
         currentHangmanIndex = 0;
@@ -118,7 +118,9 @@ public:
         incorrectLetters = new list<char>();
         
         // Set word randomly from the list
-        word = words[rand() % sizeof(*words)];
+        int size = sizeof(words)/sizeof(words[0]);
+        int randomIndex = rand() % size;
+        word = words[randomIndex];
         
         // Draw empty hangman (this method will cout the correct Hangman)
         PrintCurrentHangman(currentHangmanIndex);
@@ -233,10 +235,10 @@ public:
         // Restart Logic:
         cout << "Play again? (y/n)\n";
         // Wait for user input
+        // if user inputs "y"
         string input;
         cin >> input;
-        
-        // if user inputs "y"
+    
         if (input[0] == 'y' || input[0] == 'Y')
         {
             // Restart Game
