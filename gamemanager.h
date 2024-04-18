@@ -86,6 +86,9 @@ public:
     {
         cout << " --- HANGMAN ---\n";
         
+        // Set random seed
+        srand(time(0));
+        
         // Reset variables
         currentHangmanIndex = 0;
         delete correctLetters;
