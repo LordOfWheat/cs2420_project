@@ -231,7 +231,7 @@ ostream& operator<<(ostream& out, const list<T> &q) {
     while (temp) {
         out << temp->value;
         if (temp->next) {
-            out << " ";
+            out << ", ";
         }
 
         temp = temp->next;

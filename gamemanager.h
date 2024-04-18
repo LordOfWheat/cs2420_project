@@ -113,6 +113,12 @@ public:
 
     GameState InProgress()
     {
+        // Show list of wrong letters
+        if (!incorrectLetters->is_empty())
+        {
+            cout << "Previously guessed: " << *incorrectLetters << endl;
+        }
+        
         // Prompt user for a letter, set letter
         cout << "Guess a letter: \n";
         string letter;
