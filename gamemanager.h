@@ -87,20 +87,17 @@ public:
         while (true) {
             cout << " --- HANGMAN ---\n";
 
-            PrintCurrentHangman(6);
+            PrintCurrentHangman(maxHangmanIndex);
 
-            cout << "\nSTART\tQUIT\n";
+            cout << "Are you ready to start? (y/n)\n";
 
             string response;
             cin >> response;
 
-            if (response == "start" || response == "s")
+            if (response == "y" || response == "start" || response == "s")
                 return GameState::Start;
-            else if (response == "quit" || response == "q")
+            else if (response == "n" || response == "quit" || response == "q")
                 return GameState::Shutdown;
-            else {
-                continue;
-            }
         }
     }
 
@@ -224,16 +221,15 @@ public:
         {
             // Show Win Screen
             cout << "You guessed the word: " << word << endl;
-            cout << "Play again? (y/n)\n";
         }
         else
         {
             // Show Lose Screen
             cout << "You failed to guess the word: " << word << endl;
-            cout << "Play again? (y/n)\n";
         }
         
         // Restart Logic:
+        cout << "Play again? (y/n)\n";
         // Wait for user input
         string input;
         cin >> input;
