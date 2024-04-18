@@ -60,6 +60,9 @@ string hangmans[7] =
     "  ==========="
 };
 
+string words[10] = { "feast", "outside", "experience", "hangman", "storage",
+                     "commemorate", "flourish", "indigo", "examination", "underground" };
+
 class GameManager
 {
 private:
@@ -90,9 +93,8 @@ public:
         delete incorrectLetters;
         incorrectLetters = new list<char>();
         
-        // TODO : Set word randomly from a list
-        // Choose random word, set word
-        word = "temporary";
+        // Set word randomly from the list
+        word = words[rand() % 10];
         
         // Draw empty hangman (this method will cout the correct Hangman)
         PrintCurrentHangman(currentHangmanIndex);
@@ -176,6 +178,8 @@ public:
 
     GameState EndGame()
     {
+        PrintCurrentHangman(currentHangmanIndex);
+        
         // Check if Win or Lose
         bool win = true;
         if (currentHangmanIndex >= maxHangmanIndex)
@@ -184,7 +188,7 @@ public:
             win = false;
         }
         
-        // TODO : Show Win/Lose screen
+        // Show Win/Lose screen
         if (win)
         {
             // Show Win Screen
@@ -194,7 +198,6 @@ public:
         else
         {
             // Show Lose Screen
-            PrintCurrentHangman(currentHangmanIndex);
             cout << "You failed to guess the word: " << word << endl;
             cout << "Play again? (y/n)\n";
         }
