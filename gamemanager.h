@@ -60,8 +60,10 @@ string hangmans[7] =
     "  ==========="
 };
 
-string words[10] = { "feast", "outside", "experience", "hangman", "storage",
-                     "commemorate", "flourish", "indigo", "examination", "underground" };
+string words[] = { "feast", "outside", "experience", "hangman", "storage", "elephant",
+                     "commemorate", "flourish", "indigo", "examination", "underground",
+                     "candy", "sugar", "money", "denominator", "indifferent", "superficial",
+                     "hippopotamus", "adrenaline", "vintage" };
 
 class GameManager
 {
@@ -97,7 +99,7 @@ public:
         incorrectLetters = new list<char>();
         
         // Set word randomly from the list
-        word = words[rand() % 10];
+        word = words[rand() % sizeof(*words)];
         
         // Draw empty hangman (this method will cout the correct Hangman)
         PrintCurrentHangman(currentHangmanIndex);
