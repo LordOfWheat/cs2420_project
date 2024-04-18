@@ -5,7 +5,7 @@
 #ifndef CS2420_PROJECT_GAMEMANAGER_H
 #define CS2420_PROJECT_GAMEMANAGER_H
 
-enum GameState { Start, InProgress, End, Shutdown };
+enum GameState { Intro, Start, InProgress, End, Shutdown };
 
 string hangmans[7] =
 {
@@ -81,10 +81,32 @@ private:
     }
 
 public:
+    // Startup Screen
+    GameState Intro()
+    {
+        while (true) {
+            cout << " --- HANGMAN ---\n";
+
+            PrintCurrentHangman(6);
+
+            cout << "\nSTART\tQUIT\n";
+
+            string response;
+            cin >> response;
+
+            if (response == "start" || response == "s")
+                return GameState::Start;
+            else if (response == "quit" || response == "q")
+                return GameState::Shutdown;
+            else {
+                continue;
+            }
+        }
+    }
+
     // Called when the game starts to initialize variables
     GameState StartGame()
     {
-        cout << " --- HANGMAN ---\n";
         
         // Set random seed
         srand(time(0));

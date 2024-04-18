@@ -81,8 +81,9 @@ int main()
     ///// --- Main Game Loop --- ////
     GameManager gameManager;
     
-    GameState gameState = GameState::Start;
-    
+    GameState gameState = GameState::Intro;
+
+    gameState = gameManager.Intro();
     do // Game Loop, runs the game until finished
     {
         if (gameState == GameState::Start)
