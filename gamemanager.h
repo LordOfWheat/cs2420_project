@@ -168,7 +168,6 @@ public:
                 break;
             }
         }
-        
         // if letter NOT found:
         if (!isFound)
         {
@@ -177,11 +176,6 @@ public:
             
             // Increment Hangman state
             currentHangmanIndex++; // Compare to maxHangmanIndex
-        }
-        else // else if letter is found:
-        {
-            // Add letter to list of correct letters
-            correctLetters->insert(letter[0]);
         }
         
         // Check if you Win/Lose: (if letters == word or hangman state == maxHangmanIndex)
